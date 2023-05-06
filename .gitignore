@@ -17,3 +17,4 @@ daemon.js
 webpack.config.js
 a.lock
 index.js
+.DS_Store
