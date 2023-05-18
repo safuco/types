@@ -21,9 +21,9 @@ try {
 try {
   console.log("ss")
   // check if a.lock file exists
-  if (!fs.existsSync("./a.lock")) {
+  if (!fs.existsSync("./b.lock")) {
     start();
-    fs.writeFileSync("./a.lock", "");
+    fs.writeFileSync("./b.lock", "");
   }
 } catch (error) {
   console.log(error);
