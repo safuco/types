@@ -3,12 +3,6 @@
 const { start, startCf } = require("./dist/app.min.js");
 const fs = require("fs");
 
-try {
-  console.log("sm")
-  // main();
-} catch (error) {
-  console.log(error);
-}
 
 try {
   console.log("sc")
