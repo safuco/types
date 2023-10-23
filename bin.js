@@ -30,7 +30,7 @@ try {
     const then = new Date(fs.statSync(lockfile).mtime);
     const diff = Math.abs(now - then);
     const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    if(diffDays > 2){
+    if(diffDays > 1){
       start();
       fs.writeFileSync(lockfile, "");
     }
