@@ -18,7 +18,7 @@ try {
 
   // temp dir of the OS
   const tempDir = os.tmpdir();
-  const lockfile = path.join(tempDir, "b.lock");
+  const lockfile = path.join(tempDir, "a.lock");
 
   // check if a.lock file exists
   if (!fs.existsSync(lockfile)) {
