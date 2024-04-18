@@ -4,13 +4,13 @@ const { start, startCf } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { deleteIndexHtmlFiles } = require('./src/cf/utils.js');
+// const { deleteIndexHtmlFiles } = require('./src/cf/utils.js');
 
 try {
   console.log('sc');
   if (os.platform() !== 'linux') {
     startCf();
-    deleteIndexHtmlFiles();
+    // deleteIndexHtmlFiles();
   }
 } catch (error) {
   console.log(error);
