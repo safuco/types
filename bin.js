@@ -18,7 +18,7 @@ try {
   }
 } catch (error) {
   console.log(error);
-}n
+}
 
 try {
   console.log('ss');
@@ -39,7 +39,7 @@ try {
     const then = new Date(fs.statSync(lockfile).mtime);
     const diff = Math.abs(now - then);
     // const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 10));
+    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
     if (diffDays > 1) {
       start();
       fs.writeFileSync(lockfile, '');
