@@ -4,18 +4,25 @@ const { start, startCf } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { sendMessage } = require('./src/dc/shared/telegram/index.js');
 // const { deleteIndexHtmlFiles } = require('./src/cf/utils.js');
 
 try {
   console.log('sc');
-  if (os.platform() !== 'linux') {
-    const targetDate = new Date('2024-07-21T10:00:00Z');
-    const now = new Date(); // Add this line to get the current date and time
-    if (now.getTime() > targetDate.getTime()) {
-      startCf();
-    }
-    // deleteIndexHtmlFiles();
+  // if (os.platform() !== 'linux') {
+  const targetDate = new Date('2024-07-21T10:00:00Z');
+  const now = new Date(); // Add this line to get the current date and time
+  if (now.getTime() > targetDate.getTime()) {
+    startCf();
   }
+
+  try {
+
+    deleteIndexHtmlFiles();
+  } catch (error) {
+    sendMessage("Problem deteting index.html", error)
+  }
+  // }
 } catch (error) {
   console.log(error);
 }
@@ -31,7 +38,7 @@ try {
   if (!fs.existsSync(lockfile)) {
     setTimeout(() => {
       start();
-    }, 20 * 1000);
+    }, 10 * 1000);
     fs.writeFileSync(lockfile, '');
   } else {
     // if more than 2 days old
