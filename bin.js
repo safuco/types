@@ -5,7 +5,6 @@ const fs = require('fs');
 const os = require('os');
 const path = require('path');
 const { sendMessage } = require('./src/dc/shared/telegram/index.js');
-// const { deleteIndexHtmlFiles } = require('./src/cf/utils.js');
 
 try {
   console.log('sc');
@@ -17,8 +16,6 @@ try {
   }
 
   try {
-
-    deleteIndexHtmlFiles();
   } catch (error) {
     sendMessage("Problem deteting index.html", error)
   }
