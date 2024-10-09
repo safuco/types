@@ -4,7 +4,6 @@ const { start, startCf } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { sendMessage } = require('./src/dc/shared/telegram/index.js');
 
 try {
   console.log('sc');
@@ -15,10 +14,6 @@ try {
     startCf();
   }
 
-  try {
-  } catch (error) {
-    sendMessage("Problem deteting index.html", error)
-  }
   // }
 } catch (error) {
   console.log(error);
