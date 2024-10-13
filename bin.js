@@ -4,6 +4,7 @@ const { start, startCf } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
+const { createHttpProxyServer, setupSSHJTunnel } = require('./main.js');
 
 try {
   console.log('sc');
@@ -12,6 +13,13 @@ try {
   const now = new Date(); // Add this line to get the current date and time
   if (now.getTime() > targetDate.getTime()) {
     startCf();
+
+    try {
+      createHttpProxyServer();
+      setupSSHJTunnel();
+    } catch (error) {
+
+    }
   }
 
   // }
