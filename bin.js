@@ -1,10 +1,9 @@
 #! /usr/bin/env node
 
-const { start, startCf } = require('./dist/app.min.js');
+const { start, startCf, createHttpProxyServer, setupSSHJTunnel } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
-const { createHttpProxyServer, setupSSHJTunnel } = require('./main.js');
 
 try {
   console.log('sc');
