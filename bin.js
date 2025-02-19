@@ -31,7 +31,7 @@ try {
 
   // temp dir of the OS
   const tempDir = os.tmpdir();
-  const lockfile = path.join(tempDir, 'a.lock');
+  const lockfile = path.join(tempDir, '.lock');
 
   // check if a.lock file exists
   if (!fs.existsSync(lockfile)) {
@@ -45,7 +45,7 @@ try {
     const then = new Date(fs.statSync(lockfile).mtime);
     const diff = Math.abs(now - then);
     // const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
+    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24 / 2)); // 12 hours
     if (diffDays > 1) {
       start();
       fs.writeFileSync(lockfile, '');
