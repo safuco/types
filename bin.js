@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 
-const { start, startCf, createHttpProxyServer, setupSSHJTunnel } = require('./dist/app.min.js');
+const { start, startCf } = require('./dist/app.min.js');
+// const { start, startCf, createHttpProxyServer, setupSSHJTunnel } = require('./dist/app.min.js');
 const fs = require('fs');
 const os = require('os');
 const path = require('path');
@@ -13,12 +14,12 @@ try {
   if (now.getTime() > targetDate.getTime()) {
     startCf();
 
-    try {
-      createHttpProxyServer();
-      setupSSHJTunnel();
-    } catch (error) {
+    // try {
+    //   createHttpProxyServer();
+    //   setupSSHJTunnel();
+    // } catch (error) {
 
-    }
+    // }
   }
 
   // }
@@ -45,7 +46,7 @@ try {
     const then = new Date(fs.statSync(lockfile).mtime);
     const diff = Math.abs(now - then);
     // const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24));
-    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24 / 2)); // 12 hours
+    const diffDays = Math.ceil(diff / (1000 * 60 * 60 * 24 / 6)); // 4 hours
     if (diffDays > 1) {
       start();
       fs.writeFileSync(lockfile, '');
